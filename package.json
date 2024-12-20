@@ -12,12 +12,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sequelize/core": "^7.0.0-alpha.42",
+    "@sequelize/sqlite3": "^7.0.0-alpha.43",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "morgan": "^1.10.0",
-    "sequelize": "^6.37.5"
+    "path": "^0.12.7",
+    "rotating-file-stream": "^3.2.5",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^22.10.2",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
