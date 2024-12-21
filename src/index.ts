@@ -21,6 +21,7 @@ const logStream = createStream("api-colombia.log", {
 })
 
 // Middlewares
+app.use(express.json());
 app.use(morgan("combined", {
     stream: logStream
 }));
