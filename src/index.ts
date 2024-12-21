@@ -10,7 +10,6 @@ import "dotenv/config";
 
 // Import routes
 import mainRouter from "./routes/main.routes";
-import { create } from "domain";
 
 const app = express();
 
