@@ -34,6 +34,8 @@ app.use(rateLimit({
     windowMs: 15 * 60 * 1000,
     limit: 10,
     message: "Too many requests",
+    standardHeaders: true,
+    legacyHeaders: true
 }))
 
 
