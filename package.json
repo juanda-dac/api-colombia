@@ -17,6 +17,7 @@
     "@sequelize/sqlite3": "^7.0.0-alpha.43",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
     "morgan": "^1.10.0",
     "path": "^0.12.7",
     "rotating-file-stream": "^3.2.5",

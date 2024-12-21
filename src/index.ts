@@ -1,6 +1,9 @@
 import express from "express";
 import morgan from "morgan";
 import path from "path";
+
+import { rateLimit } from "express-rate-limit"
+
 // @ts-ignore
 import { createStream } from "rotating-file-stream";
 import { sequelize } from "./db/db";
@@ -25,6 +28,14 @@ app.use(express.json());
 app.use(morgan("combined", {
     stream: logStream
 }));
+
+// Rate limit
+app.use(rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 10,
+    message: "Too many requests",
+}))
+
 
 // Register routes
 app.use("/api/v1", mainRouter);
