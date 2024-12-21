@@ -3,24 +3,29 @@ import {
     Model,
     InferAttributes,
     InferCreationAttributes,
-    NonAttribute
+    NonAttribute,
+    CreationOptional
 } from "@sequelize/core"
 
-import { Attribute, PrimaryKey, NotNull, Default, BelongsTo } from "@sequelize/core/decorators-legacy"
+import { Attribute, PrimaryKey, NotNull, Default, BelongsTo, Table } from "@sequelize/core/decorators-legacy"
 import {v4} from "uuid"
 
-import { Department } from "./Department"
+import Department from "./Department"
 
-export class City extends Model<InferAttributes<City>, InferCreationAttributes<City>>{
+
+@Table({timestamps:false})
+export default class City extends Model<InferAttributes<City>, InferCreationAttributes<City>>{
 
     @Attribute(DataTypes.UUID)
     @PrimaryKey
-    @Default(v4())
-    declare id: string;
+    @Default(()=> v4())
+    declare id: CreationOptional<string>;
 
     @Attribute(DataTypes.STRING)
     @NotNull
-    declare name: string;
+    get name(): string{
+        return this.getDataValue('name').charAt(0).toUpperCase() + this.getDataValue('name').slice(1);
+    }
 
     @BelongsTo(() => Department, 'departmentId')
     declare department: NonAttribute<Department>;
