@@ -2,6 +2,7 @@ import { Sequelize } from "@sequelize/core";
 import { MySqlDialect } from "@sequelize/mysql";
 import City from "../models/City";
 import Department from "../models/Department";
+import { readFileSync } from "fs";
 
 import "dotenv/config";
 
@@ -13,5 +14,8 @@ export const sequelize = new Sequelize({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
+    ssl: {
+        ca: readFileSync('./src/cert/ca.pem'),
+    },
     models: [City, Department]
 });

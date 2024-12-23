@@ -50,10 +50,12 @@ app.use((req, res) => {
 })
 
 sequelize.sync({ alter:true }).then(async () => {
-    // await createDepartments();
-    // await createCities();
+    await createDepartments();
+    await createCities();
     console.log("Database and tables created!");
-});
+}).catch((error)=>{
+    console.log("Error en la base de datos");
+})
 
 
 app.listen(PORT, () => {
